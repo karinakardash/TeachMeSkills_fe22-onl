@@ -40,8 +40,11 @@ const userNames = users.map(item => item.name).join(", ");
 
 //Task 2
 
-const carNumbers = users.map(item => item.cars).length;
+function getCarsNumber (arr: typeof users) {
+    return arr.filter(item => item.hasOwnProperty('cars')).map(item => item.cars).length;
+}
 
+getCarsNumber(users)
 
 //Task 3
 
@@ -70,7 +73,7 @@ returnCars(users);
 //Task 5, если нужно удалить повторы
 
 function returnUniqueCars(arr: typeof users) {
-    const newArr = arr.filter(item => item.hasOwnProperty('cars')).map(item => item.cars).join(",").split(",");
+    const newArr = arr.filter(item => item.hasOwnProperty('cars')).map(item => item.cars).flat();
     return [...new Set(newArr)].join(",")
 }
 
