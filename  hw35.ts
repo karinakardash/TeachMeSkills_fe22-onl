@@ -41,7 +41,7 @@ const userNames = users.map(item => item.name).join(", ");
 //Task 2
 
 function getCarsNumber (arr: typeof users) {
-    return arr.filter(item => item.hasOwnProperty('cars')).map(item => item.cars).length;
+    return arr.filter(item => item.hasOwnProperty('cars')).flatMap(item => item.cars).length;
 }
 
 getCarsNumber(users)
