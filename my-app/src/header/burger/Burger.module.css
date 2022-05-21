@@ -1,0 +1,69 @@
+.burger,
+.burgerIsOpen {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  z-index: 30;
+  transition: all 0.4s linear;
+  cursor: pointer;
+}
+.burgerIsOpen .line {
+  background-color: transparent;
+}
+.burgerIsOpen .line::after {
+  top: 0;
+  left: 0;
+  transform: rotate(-45deg);
+}
+.burgerIsOpen .line::before {
+  top: 0;
+  left: 0;
+  transform: rotate(45deg);
+}
+.line {
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: white;
+  transition: all 0.4s linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.line::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: white;
+  transition: all 0.4s linear;
+  top: -14px;
+  left: 0;
+}
+.line::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 4px;
+  background-color: white;
+  transition: all 0.4s linear;
+  top: 14px;
+  left: 0;
+}
+.menu {
+  display: block;
+  transition: all 0.4s linear;
+  background-color: rgb(16, 3, 139);
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  z-index: 20;
+}
+.menuNone {
+  display: none;
+  transition: all 0.4s linear;
+  top: 0;
+}
