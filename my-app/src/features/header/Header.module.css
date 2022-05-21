@@ -1,0 +1,11 @@
+.header {
+  padding: 40px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+}
+.headerIsOpen {
+  background-color: var(--blue-background-color);
+}

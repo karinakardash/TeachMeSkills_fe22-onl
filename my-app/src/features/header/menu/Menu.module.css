@@ -1,0 +1,17 @@
+.link {
+  color: white;
+  list-style: none;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.link:last-child {
+  margin-bottom: 0;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 10px 30px;
+}
