@@ -4,7 +4,7 @@ import { Header } from "../../features/header/Header";
 
 type ContentTemplateProps = {
   title: React.ReactNode;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export const ContentTemplate: React.FC<ContentTemplateProps> = ({

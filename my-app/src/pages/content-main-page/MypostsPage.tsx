@@ -1,11 +1,11 @@
 import { ContentTemplate } from "../../templates/content/ContentTemplate";
 import { CardList } from "../../ui/card/cardsList/CardList";
-import styles from "../content-main-page/ContentMainPage.module.css";
+import styles from "../content-main-page/MypostsPage.module.css";
 import { PrimaryButton } from "../../ui/button/primary-button/PrimaryButton";
 
-type ContentMainPageProps = {};
+type MypostsPageProps = {};
 
-export const ContentMainPage: React.FC<ContentMainPageProps> = () => {
+export const MypostsPage: React.FC<MypostsPageProps> = () => {
   return (
     <div className={styles.wrapper}>
       <ContentTemplate title="My posts">

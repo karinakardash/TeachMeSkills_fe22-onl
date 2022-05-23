@@ -1,7 +1,7 @@
 .App {
-  --primary-text-color: rgb(19, 70, 117);
-  --secondary-text-color: rgb(136, 151, 160);
-  --blue-background-color: rgb(19, 70, 117);
+  --primary-text-color: rgb(14, 78, 138);
+  --secondary-text-color: rgb(118, 133, 143);
+  --blue-background-color: rgb(14, 78, 138);
   --light-blue-background-color: rgb(221, 239, 255);
   text-align: center;
 }

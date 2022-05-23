@@ -6,6 +6,7 @@ type CardProps = {
   text: string;
   date: string;
   title: string;
+  className?: string;
 };
 export const Card: React.FC<CardProps> = ({
   id,
@@ -13,9 +14,10 @@ export const Card: React.FC<CardProps> = ({
   text,
   date,
   title,
+  className = " ",
 }) => {
   return (
-    <article className={styles.card} id={`card.${id}`}>
+    <article className={`{styles.card} ${className}`} id={`card.${id}`}>
       <img src={image} alt={`postpicture${id}`} className={styles.card__img} />
       <h3 className={styles.card__title}>{title}</h3>
       <p className={styles.card__text}>{text}</p>

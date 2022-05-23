@@ -1,0 +1,9 @@
+.text {
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--secondary-text-color);
+  font-size: 18px;
+}
+.span {
+  color: var(--primary-text-color);
+}
