@@ -6,7 +6,7 @@ import { useState } from "react";
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className={isOpen ? `${styles.headerIsOpen}` : `${styles.header}`}>
+    <header className={`${styles.header} ${isOpen ? styles.headerIsOpen : ""}`}>
       <Burger onClick={() => setIsOpen(!isOpen)}>
         <Menu></Menu>
       </Burger>

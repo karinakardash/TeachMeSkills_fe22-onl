@@ -1,25 +1,24 @@
-import { PrimaryButton } from "../../ui/button/primary-button/PrimaryButton";
-import { Title } from "../../ui/title/Title";
 import styles from "./OnboardingTemplate.module.css";
-import { Header } from "../../features/header/Header";
 
 type OnboardingTemplateProps = {
   title: React.ReactNode;
   children: React.ReactNode;
-  textButton: React.ReactNode;
+  actionButton: React.ReactNode;
+  description?: React.ReactNode;
 };
 
 export const OnboardingTemplate: React.FC<OnboardingTemplateProps> = ({
   title,
   children,
-  textButton,
+  actionButton,
+  description,
 }) => {
   return (
     <div className={styles.container}>
-      <Header></Header>
-      <Title>{title}</Title>
-      <div>{children}</div>
-      <PrimaryButton className={styles.button}>{textButton}</PrimaryButton>
+      {title}
+      {children}
+      {actionButton}
+      {description}
     </div>
   );
 };

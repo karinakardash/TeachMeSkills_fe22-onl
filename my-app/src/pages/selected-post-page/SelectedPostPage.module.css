@@ -13,3 +13,7 @@
 .cardSelected img {
   height: 300px;
 }
+.posts__title {
+  text-align: left;
+  margin-bottom: 30px;
+}

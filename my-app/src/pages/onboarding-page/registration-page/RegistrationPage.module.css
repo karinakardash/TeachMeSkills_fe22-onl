@@ -1,6 +1,11 @@
+.button {
+  max-width: 236px;
+  width: 100%;
+  margin-top: 30px;
+}
 .text {
   color: var(--secondary-text-color);
-  font-size: 20px;
+  font-size: 18px;
 }
 .link {
   color: var(--primary-text-color);
@@ -17,9 +22,4 @@
 }
 .transferPage:hover {
   text-decoration: underline;
-}
-.button {
-  max-width: 236px;
-  width: 100%;
-  margin-top: 30px;
 }

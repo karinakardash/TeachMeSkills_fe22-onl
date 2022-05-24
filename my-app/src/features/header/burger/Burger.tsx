@@ -12,7 +12,10 @@ export const Burger: React.FC<BurgerProps> = ({ onClick }) => {
   return (
     <div
       className={isOpen ? `${styles.burgerIsOpen}` : `${styles.burger}`}
-      onClick={() => setIsOpen(!isOpen)}
+      onClick={() => {
+        setIsOpen(!isOpen);
+        onClick();
+      }}
     >
       <div className={styles.line}></div>
       <div className={isOpen ? `${styles.menu}` : `${styles.menuNone}`}>

@@ -1,5 +1,6 @@
 import { ContentTemplate } from "../../templates/content/ContentTemplate";
 import { Card } from "../../ui/card/Card";
+import { Title } from "../../ui/title/Title";
 import styles from "../selected-post-page/SelectedPostPage.module.css";
 
 type SelectedPostPageProps = {};
@@ -7,7 +8,9 @@ type SelectedPostPageProps = {};
 export const SelectedPostPage: React.FC<SelectedPostPageProps> = () => {
   return (
     <div className={styles.wrapper}>
-      <ContentTemplate title="Selected Post"></ContentTemplate>
+      <ContentTemplate
+        title={<Title className={styles.posts__title}>Selected Post</Title>}
+      ></ContentTemplate>
       <Card
         className={styles.cardSelected}
         id="5"

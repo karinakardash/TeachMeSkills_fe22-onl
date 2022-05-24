@@ -17,7 +17,7 @@ export const Card: React.FC<CardProps> = ({
   className = " ",
 }) => {
   return (
-    <article className={`{styles.card} ${className}`} id={`card.${id}`}>
+    <article className={`${styles.card} ${className}`} id={`card.${id}`}>
       <img src={image} alt={`postpicture${id}`} className={styles.card__img} />
       <h3 className={styles.card__title}>{title}</h3>
       <p className={styles.card__text}>{text}</p>

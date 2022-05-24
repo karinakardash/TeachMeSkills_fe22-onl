@@ -14,10 +14,8 @@ export const ContentTemplate: React.FC<ContentTemplateProps> = ({
   return (
     <div className={styles.container}>
       <Header></Header>
-      <div className={styles.content}>
-        <Title className={styles.posts__title}>{title}</Title>
-        <div>{children}</div>
-      </div>
+      {title}
+      <div>{children}</div>
     </div>
   );
 };
