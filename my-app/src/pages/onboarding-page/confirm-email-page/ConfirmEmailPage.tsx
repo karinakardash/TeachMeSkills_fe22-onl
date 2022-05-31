@@ -11,7 +11,9 @@ export const ConfirmEmailPage: React.FC<ConfirmEmailPageProps> = () => {
       <OnboardingTemplate
         title={<Title>Registration Confirmation</Title>}
         actionButton={
-          <PrimaryButton className={styles.button}>Home</PrimaryButton>
+          <PrimaryButton type="button" className={styles.button}>
+            Home
+          </PrimaryButton>
         }
       >
         <p className={styles.text}>

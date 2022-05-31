@@ -1,8 +1,22 @@
-.App {
-  --primary-text-color: rgb(14, 78, 138);
+#root {
+  --ls-blue: rgb(14, 78, 138);
+  --ls-light-blue: rgb(221, 239, 255);
+  --ds-blue: rgb(6, 35, 61);
+  --ds-light-blue: rgb(35, 103, 161);
+
+  --primary-text-color: var(--ls-blue);
   --secondary-text-color: rgb(118, 133, 143);
-  --blue-background-color: rgb(14, 78, 138);
-  --light-blue-background-color: rgb(221, 239, 255);
+  --blue-background-color: var(--ls-blue);
+  --light-blue-background-color: var(--ls-light-blue);
+}
+@media (prefers-color-scheme: dark) {
+  #root {
+    --primary-text-color: white;
+    --blue-background-color: var(--ds-blue);
+    --light-blue-background-color: var(--ds-light-blue);
+  }
+}
+.App {
   text-align: center;
 }
 

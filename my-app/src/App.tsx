@@ -7,11 +7,16 @@ import { RegistrationConfirmationPage } from "./pages/onboarding-page/registrati
 import { ConfirmEmailPage } from "./pages/onboarding-page/confirm-email-page/ConfirmEmailPage";
 import { SelectedPostPage } from "./pages/selected-post-page/SelectedPostPage";
 import { RegistrationPage } from "./pages/onboarding-page/registration-page/RegistrationPage";
+import { AppContext } from "./AppContext";
+import { InformationPage } from "./pages/information-page/InformationPage";
 
 function App() {
+  const appRef = React.createRef<HTMLDivElement>();
   return (
-    <div className="App">
-      <RegistrationConfirmationPage></RegistrationConfirmationPage>
+    <div className="App" ref={appRef}>
+      <AppContext.Provider value={appRef}>
+        <InformationPage></InformationPage>
+      </AppContext.Provider>
     </div>
   );
 }

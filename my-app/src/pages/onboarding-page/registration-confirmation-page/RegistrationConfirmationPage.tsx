@@ -13,7 +13,9 @@ export const RegistrationConfirmationPage: React.FC<
       <OnboardingTemplate
         title={<Title>Success</Title>}
         actionButton={
-          <PrimaryButton className={styles.button}>Login</PrimaryButton>
+          <PrimaryButton type="button" className={styles.button}>
+            Login
+          </PrimaryButton>
         }
       >
         <p className={styles.text}>

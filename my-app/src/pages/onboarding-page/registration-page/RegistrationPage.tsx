@@ -24,7 +24,9 @@ export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
           </Title>
         }
         actionButton={
-          <PrimaryButton className={styles.button}>Login</PrimaryButton>
+          <PrimaryButton type="button" className={styles.button}>
+            Login
+          </PrimaryButton>
         }
         description={
           <p className={styles.text}>

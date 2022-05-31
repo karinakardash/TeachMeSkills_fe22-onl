@@ -23,7 +23,9 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
           </Title>
         }
         actionButton={
-          <PrimaryButton className={styles.button}>Login</PrimaryButton>
+          <PrimaryButton className={styles.button} type="button">
+            Login
+          </PrimaryButton>
         }
         description={
           <p className={styles.text}>
@@ -48,6 +50,16 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
             onChange={(event) => setPasswordValue(event.target.value)}
           ></Input>
         </form>
+        <PrimaryButton
+          className={styles.button}
+          type="reset"
+          onClick={() => {
+            setEmailValue("");
+            setPasswordValue("");
+          }}
+        >
+          Reset
+        </PrimaryButton>
       </OnboardingTemplate>
     </div>
   );
