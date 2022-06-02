@@ -4,6 +4,9 @@ import { OnboardingTemplate } from "../../../templates/onboarding/OnboadingTempl
 import { useState } from "react";
 import { Title } from "../../../ui/title/Title";
 import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
+import { useNavigate } from "react-router";
+import { AppPages } from "../../../types";
+import { Link } from "react-router-dom";
 
 type RegistrationPageProps = {};
 
@@ -11,29 +14,33 @@ export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [userNameValue, setuserNameValue] = useState("");
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
       <OnboardingTemplate
         title={
           <Title>
-            <a className={styles.transferPage} href="#">
-              {" "}
-              Login{" "}
-            </a>{" "}
+            <Link to={AppPages.LOGIN} className={styles.transferPage}>
+              Login
+            </Link>{" "}
             | Registration
           </Title>
         }
         actionButton={
-          <PrimaryButton type="button" className={styles.button}>
-            Login
+          <PrimaryButton
+            type="button"
+            className={styles.button}
+            onClick={() => navigate(AppPages.SUCCESS_PAGE)}
+          >
+            Registration
           </PrimaryButton>
         }
         description={
           <p className={styles.text}>
             If you have account, you can{" "}
-            <a href="#" className={styles.link}>
+            <Link to={AppPages.LOGIN} className={styles.link}>
               login
-            </a>
+            </Link>
           </p>
         }
       >

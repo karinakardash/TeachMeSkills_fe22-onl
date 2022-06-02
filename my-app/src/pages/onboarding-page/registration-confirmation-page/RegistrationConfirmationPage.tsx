@@ -2,6 +2,8 @@ import styles from "../registration-confirmation-page/RegistrationConfirmationPa
 import { OnboardingTemplate } from "../../../templates/onboarding/OnboadingTemplate";
 import { Title } from "../../../ui/title/Title";
 import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
+import { Link } from "react-router-dom";
+import { AppPages } from "../../../types";
 
 type RegistrationConfirmationProps = {};
 
@@ -13,9 +15,15 @@ export const RegistrationConfirmationPage: React.FC<
       <OnboardingTemplate
         title={<Title>Success</Title>}
         actionButton={
-          <PrimaryButton type="button" className={styles.button}>
-            Login
-          </PrimaryButton>
+          <Link to={AppPages.LOGIN}>
+            <PrimaryButton
+              type="button"
+              className={styles.button}
+              role="presentation"
+            >
+              Login
+            </PrimaryButton>
+          </Link>
         }
       >
         <p className={styles.text}>

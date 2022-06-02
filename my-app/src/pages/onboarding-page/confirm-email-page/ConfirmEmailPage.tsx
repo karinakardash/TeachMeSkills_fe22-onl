@@ -2,6 +2,8 @@ import styles from "../confirm-email-page/ConfirmEmailPage.module.css";
 import { OnboardingTemplate } from "../../../templates/onboarding/OnboadingTemplate";
 import { Title } from "../../../ui/title/Title";
 import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
+import { Link } from "react-router-dom";
+import { AppPages } from "../../../types";
 
 type ConfirmEmailPageProps = {};
 
@@ -11,9 +13,15 @@ export const ConfirmEmailPage: React.FC<ConfirmEmailPageProps> = () => {
       <OnboardingTemplate
         title={<Title>Registration Confirmation</Title>}
         actionButton={
-          <PrimaryButton type="button" className={styles.button}>
-            Home
-          </PrimaryButton>
+          <Link to={AppPages.MAIN_PAGE}>
+            <PrimaryButton
+              type="button"
+              className={styles.button}
+              role="presentation"
+            >
+              Home
+            </PrimaryButton>
+          </Link>
         }
       >
         <p className={styles.text}>

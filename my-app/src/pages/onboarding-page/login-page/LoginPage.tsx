@@ -4,6 +4,9 @@ import { OnboardingTemplate } from "../../../templates/onboarding/OnboadingTempl
 import { useState } from "react";
 import { Title } from "../../../ui/title/Title";
 import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
+import { Link } from "react-router-dom";
+import { AppPages } from "../../../types";
+import App from "../../../App";
 
 type LoginPageProps = {};
 
@@ -16,16 +19,21 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
         title={
           <Title>
             Login |{" "}
-            <a className={styles.transferPage} href="#">
-              {" "}
-              Registration{" "}
-            </a>{" "}
+            <Link to={AppPages.REGISTRATION} className={styles.transferPage}>
+              Registration
+            </Link>
           </Title>
         }
         actionButton={
-          <PrimaryButton className={styles.button} type="button">
-            Login
-          </PrimaryButton>
+          <Link to={AppPages.POSTS}>
+            <PrimaryButton
+              className={styles.button}
+              type="button"
+              role="presentation"
+            >
+              Login
+            </PrimaryButton>
+          </Link>
         }
         description={
           <p className={styles.text}>

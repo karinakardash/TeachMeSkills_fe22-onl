@@ -1,6 +1,6 @@
 #root {
   --ls-blue: rgb(14, 78, 138);
-  --ls-light-blue: rgb(221, 239, 255);
+  --ls-light-blue: rgb(236, 244, 252);
   --ds-blue: rgb(6, 35, 61);
   --ds-light-blue: rgb(35, 103, 161);
 
@@ -53,4 +53,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+a {
+  text-decoration: none;
 }

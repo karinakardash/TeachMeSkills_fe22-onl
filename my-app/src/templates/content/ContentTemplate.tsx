@@ -5,17 +5,19 @@ import { Header } from "../../features/header/Header";
 type ContentTemplateProps = {
   title: React.ReactNode;
   children?: React.ReactNode;
+  className?: string;
 };
 
 export const ContentTemplate: React.FC<ContentTemplateProps> = ({
   title,
   children,
+  className,
 }) => {
   return (
     <div className={styles.container}>
       <Header></Header>
       {title}
-      <div>{children}</div>
+      <div className={className}>{children}</div>
     </div>
   );
 };

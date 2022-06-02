@@ -4,6 +4,7 @@ type PrimaryButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  role?: string;
 };
 
 export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -11,12 +12,14 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   className = "",
   type,
   onClick,
+  role,
 }) => {
   return (
     <button
       className={`${styles.button} ${className}`}
       type={type}
       onClick={onClick}
+      role={role}
     >
       {children}
     </button>

@@ -13,7 +13,7 @@ export const MypostsPage: React.FC<MypostsPageProps> = () => {
   useEffect(() => {
     setTimeout(() => {
       setPosts(data);
-    }, 1000);
+    }, 100);
   }, []);
   return (
     <div className={styles.wrapper}>

@@ -1,10 +1,11 @@
 export enum AppPages {
+    EMAIL_CONFIRMATION = "/email-confirmation",
+    INFORMATION = "/information",
     LOGIN = "/login",
-    REGISTRATION ="/registration",
-    POSTS ="./posts",
+    POSTS ="/posts",
     POSTS_ITEM = "/posts/:id",
+    REGISTRATION ="/registration",
     RESET_PASSWORD = "/reset-password",
     SUCCESS_PAGE = "/success-page",
-    INFORMATION = "./information",
-    EMAIL_CONFIRMATION = "./email-confirmation",
+    MAIN_PAGE = "/main" 
 }
