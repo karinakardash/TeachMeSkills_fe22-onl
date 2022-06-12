@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import { LikeDislike } from "../../features/posts/like-dislike/ui/like-dislike/LikeDislike";
 import { PrimaryButton } from "../button/primary-button/PrimaryButton";
 import styles from "./Card.module.css";
@@ -13,6 +13,7 @@ type CardProps = {
   onPreviewClick?: (id: string | number) => void;
   LikeDislike?: React.ComponentType<{ id: string | number }>;
   Marker?: React.ComponentType<{ id: string | number }>;
+  children?: React.ReactNode;
 };
 export const Card: React.FC<CardProps> = ({
   id,
@@ -24,9 +25,11 @@ export const Card: React.FC<CardProps> = ({
   onPreviewClick,
   LikeDislike,
   Marker,
+  children,
 }) => {
   return (
     <article className={`${styles.card} ${className}`} id={`card.${id}`}>
+      {children}
       <img src={image} alt={`postpicture${id}`} className={styles.card__img} />
       <h3 className={styles.card__title}>{title}</h3>
       <p className={styles.card__text}>{text}</p>

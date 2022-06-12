@@ -15,13 +15,13 @@ type MypostsPageProps = {};
 
 export const MypostsPage: React.FC<MypostsPageProps> = () => {
   const [posts, setPosts] = useState<typeof data | null>(null);
-  const selectedPostId = useAppSelector((state) => state.selectedPost.id);
-  const selectedPost =
+  const [modal, setModal] = useState(true);
+  let selectedPostId = useAppSelector((state) => state.selectedPost.id);
+  let selectedPost =
     selectedPostId != null
       ? posts?.find((item) => item.id === selectedPostId)
       : null;
   const dispatch = useAppDispatch();
-  console.log(selectedPostId);
   useEffect(() => {
     setTimeout(() => {
       setPosts(data);
@@ -30,10 +30,33 @@ export const MypostsPage: React.FC<MypostsPageProps> = () => {
   return (
     <div className={styles.wrapper}>
       {selectedPostId != null ? (
-        <div className={styles.overlayContainer}>
-          <div className={styles.overlay}>
+        <div
+          className={
+            modal
+              ? `${styles.overlayContainer}`
+              : `${styles.overlayContainerClose}`
+          }
+        >
+          <div
+            className={styles.overlay}
+            onClick={() => {
+              setModal(false);
+            }}
+          >
             {selectedPost ? (
-              <Card className={styles.card} {...selectedPost}></Card>
+              <Card className={styles.card} {...selectedPost}>
+                <div
+                  className={styles.cross}
+                  role="button"
+                  onClick={(event) => {
+                    setModal(false);
+                    console.log(selectedPostId);
+                    event.preventDefault();
+                  }}
+                >
+                  X
+                </div>
+              </Card>
             ) : null}
           </div>
         </div>
@@ -47,7 +70,10 @@ export const MypostsPage: React.FC<MypostsPageProps> = () => {
         }
       >
         <PostsCardList
-          onPreviewClick={(id) => dispatch(setSelectedPost(id))}
+          onPreviewClick={(id) => {
+            dispatch(setSelectedPost(id));
+            setModal(true);
+          }}
         ></PostsCardList>
       </ContentTemplate>
     </div>
