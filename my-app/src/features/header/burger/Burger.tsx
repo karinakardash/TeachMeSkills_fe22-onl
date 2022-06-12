@@ -19,7 +19,7 @@ export const Burger: React.FC<BurgerProps> = ({ onClick }) => {
     >
       <div className={styles.line}></div>
       <div className={isOpen ? `${styles.menu}` : `${styles.menuNone}`}>
-        <Menu></Menu>
+        <Menu isLogggedIn={false}></Menu>
       </div>
     </div>
   );

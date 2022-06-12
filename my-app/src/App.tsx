@@ -36,7 +36,7 @@ function App() {
             element={<MypostsPage></MypostsPage>}
           ></Route>
           <Route
-            path={AppPages.POSTS_ITEM}
+            path={`${AppPages.POSTS}/id`}
             element={<SelectedPostPage></SelectedPostPage>}
           ></Route>
           <Route

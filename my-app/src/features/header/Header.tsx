@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
   return (
     <header className={`${styles.header} ${isOpen ? styles.headerIsOpen : ""}`}>
       <Burger onClick={() => setIsOpen(!isOpen)}>
-        <Menu></Menu>
+        <Menu isLogggedIn={false}></Menu>
       </Burger>
       <input
         type="checkbox"

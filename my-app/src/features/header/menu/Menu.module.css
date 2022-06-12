@@ -1,6 +1,8 @@
+li {
+  list-style: none;
+}
 .link {
   color: white;
-  list-style: none;
   text-align: left;
   margin-bottom: 30px;
 }
