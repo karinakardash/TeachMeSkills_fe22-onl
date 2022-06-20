@@ -7,12 +7,16 @@ import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
 import { Link } from "react-router-dom";
 import { AppPages } from "../../../types";
 import App from "../../../App";
+import { useAppDispatch } from "../../../hooks";
+import { login } from "../../../features/auth/authSlice";
 
 type LoginPageProps = {};
 
 export const LoginPage: React.FC<LoginPageProps> = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
+  const dispatch = useAppDispatch();
+
   return (
     <div className={styles.wrapper}>
       <OnboardingTemplate
@@ -24,17 +28,6 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
             </Link>
           </Title>
         }
-        actionButton={
-          <Link to={AppPages.POSTS}>
-            <PrimaryButton
-              className={styles.button}
-              type="button"
-              role="presentation"
-            >
-              Login
-            </PrimaryButton>
-          </Link>
-        }
         description={
           <p className={styles.text}>
             Forgot your password?{" "}
@@ -44,7 +37,12 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
           </p>
         }
       >
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(login({ email: emailValue, password: passwordValue }));
+          }}
+        >
           <Input
             label="Email"
             type="email"
@@ -57,6 +55,9 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
             value={passwordValue}
             onChange={(event) => setPasswordValue(event.target.value)}
           ></Input>
+          <PrimaryButton className={styles.button} type="submit">
+            Login
+          </PrimaryButton>
         </form>
         <PrimaryButton
           className={styles.button}

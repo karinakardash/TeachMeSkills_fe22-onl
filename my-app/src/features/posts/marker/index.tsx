@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import markerSlice, { setMarker } from "./markerSlice";
+import React from "react";
+import { setMarker } from "./markerSlice";
 import { Marker } from "./ui/marker/Marker";
 import { useAppSelector, useAppDispatch } from "../../../hooks";
 
@@ -13,10 +13,10 @@ export const PostsMarker: React.FC<PostsMarkerProps> = ({ id }) => {
   );
   const dispatch = useAppDispatch();
   const onMarkerClick = () => {
-    if (state !== "true") {
-      dispatch(setMarker({ id, state: "true" }));
+    if (state !== true) {
+      dispatch(setMarker({ id, state: true }));
     } else {
-      dispatch(setMarker({ id, state: "false" }));
+      dispatch(setMarker({ id, state: false }));
     }
   };
 

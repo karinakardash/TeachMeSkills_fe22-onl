@@ -7,11 +7,13 @@ import { RegistrationConfirmationPage } from "./pages/onboarding-page/registrati
 import { ConfirmEmailPage } from "./pages/onboarding-page/confirm-email-page/ConfirmEmailPage";
 import { SelectedPostPage } from "./pages/selected-post-page/SelectedPostPage";
 import { RegistrationPage } from "./pages/onboarding-page/registration-page/RegistrationPage";
+import { AllPostsPage } from "./pages/all-posts-page/AllPostsPage";
 import { AppContext } from "./AppContext";
 import { InformationPage } from "./pages/information-page/InformationPage";
 import { MainPage } from "./pages/main-page/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppPages } from "./types";
+import { Activate } from "./pages/onboarding-page/activate/Activate";
 
 function App() {
   const appRef = React.createRef<HTMLDivElement>();
@@ -28,16 +30,24 @@ function App() {
             element={<InformationPage></InformationPage>}
           ></Route>
           <Route
+            path={`${AppPages.ACTIVATE}/:uid/:token`}
+            element={<Activate></Activate>}
+          ></Route>
+          <Route
             path={AppPages.LOGIN}
             element={<LoginPage></LoginPage>}
           ></Route>
           <Route
-            path={AppPages.POSTS}
+            path={AppPages.MY_POSTS}
             element={<MypostsPage></MypostsPage>}
           ></Route>
           <Route
-            path={`${AppPages.POSTS}/id`}
+            path={`${AppPages.ALL_POSTS}/id`}
             element={<SelectedPostPage></SelectedPostPage>}
+          ></Route>
+          <Route
+            path={AppPages.ALL_POSTS}
+            element={<AllPostsPage></AllPostsPage>}
           ></Route>
           <Route
             path={AppPages.REGISTRATION}

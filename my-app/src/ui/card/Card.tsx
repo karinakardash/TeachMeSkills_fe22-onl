@@ -42,8 +42,10 @@ export const Card: React.FC<CardProps> = ({
       >
         Preview
       </PrimaryButton>
-      {LikeDislike ? <LikeDislike id={id} /> : null}
-      {Marker ? <Marker id={id} /> : null}
+      <div className={styles.footer}>
+        {LikeDislike ? <LikeDislike id={id} /> : null}
+        {Marker ? <Marker id={id} /> : null}
+      </div>
     </article>
   );
 };

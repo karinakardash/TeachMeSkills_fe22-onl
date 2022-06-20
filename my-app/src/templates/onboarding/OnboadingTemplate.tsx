@@ -3,7 +3,7 @@ import styles from "./OnboardingTemplate.module.css";
 type OnboardingTemplateProps = {
   title: React.ReactNode;
   children: React.ReactNode;
-  actionButton: React.ReactNode;
+  actionButton?: React.ReactNode;
   description?: React.ReactNode;
 };
 

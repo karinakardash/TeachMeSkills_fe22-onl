@@ -12,13 +12,13 @@ export const ListLoggedIn: React.FC = () => {
     <ul className={styles.list}>
       <li>
         {" "}
-        <Link to={AppPages.POSTS} className={styles.link}>
+        <Link to={AppPages.MY_POSTS} className={styles.link}>
           All posts
         </Link>
       </li>
       <li>
         {" "}
-        <Link to={AppPages.POSTS} className={styles.link}>
+        <Link to={AppPages.MY_POSTS} className={styles.link}>
           My posts
         </Link>
       </li>

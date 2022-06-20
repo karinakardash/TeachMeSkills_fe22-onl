@@ -6,7 +6,7 @@ type TabsProps = {
   tabs: {
     label: string;
     index: number;
-    Component: React.FC<{ index: number }>;
+    Component: React.FC<{ index: number; onPreviewClick?: () => void }>;
   }[];
   selectedTab: number;
   onClick: (index: number) => void;

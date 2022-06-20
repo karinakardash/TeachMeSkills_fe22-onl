@@ -6,7 +6,6 @@ import data from "./data.json";
 import { useEffect, useState } from "react";
 import { Title } from "../../ui/title/Title";
 import { setSelectedPost } from "../../features/posts/selectedPostSlice";
-import { useSelector } from "react-redux";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { Card } from "../../ui/card/Card";
 import { PostsCardList } from "../../features/posts/card-list/CardList";

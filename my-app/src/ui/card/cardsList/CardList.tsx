@@ -9,7 +9,9 @@ type CardListProps = {
     image?: string | undefined;
     text: string;
     date: string;
+    lesson_num?: number;
     title: string;
+    author?: number;
   }>;
   onPreviewClick?: (id: string | number) => void;
   LikeDislike?: React.ComponentType<{ id: string | number }>;
@@ -24,7 +26,7 @@ export const CardList: React.FC<CardListProps> = ({
   return (
     <div className={styles.cardList}>
       {data.map((post) => (
-        <Link to={`${AppPages.POSTS}/${post.id}`}>
+        <Link to={`${AppPages.ALL_POSTS}/${post.id}`}>
           <Card
             id={post.id}
             key={post.id}

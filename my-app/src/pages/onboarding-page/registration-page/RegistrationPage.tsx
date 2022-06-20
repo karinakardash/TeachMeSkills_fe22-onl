@@ -7,13 +7,22 @@ import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
 import { useNavigate } from "react-router";
 import { AppPages } from "../../../types";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks";
+import { register } from "../../../features/auth/authSlice";
+
+export type LoginForm = {
+  emailValue: string;
+  passwordValue: string;
+  userNameValue: string;
+};
 
 type RegistrationPageProps = {};
 
-export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
+export const RegistrationPage: React.FC<RegistrationPageProps> = ({}) => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [userNameValue, setuserNameValue] = useState("");
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
@@ -26,15 +35,6 @@ export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
             | Registration
           </Title>
         }
-        actionButton={
-          <PrimaryButton
-            type="button"
-            className={styles.button}
-            onClick={() => navigate(AppPages.SUCCESS_PAGE)}
-          >
-            Registration
-          </PrimaryButton>
-        }
         description={
           <p className={styles.text}>
             If you have account, you can{" "}
@@ -44,7 +44,18 @@ export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
           </p>
         }
       >
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch(
+              register({
+                email: emailValue,
+                password: passwordValue,
+                username: userNameValue,
+              })
+            );
+          }}
+        >
           <Input
             label="Username"
             type="text"
@@ -64,11 +75,14 @@ export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
             onChange={(event) => setPasswordValue(event.target.value)}
           ></Input>
           <Input
-            label="Confirm email"
-            type="email"
-            value={emailValue}
-            onChange={(event) => setEmailValue(event.target.value)}
+            label="Confirm password"
+            type="password"
+            value={passwordValue}
+            onChange={(event) => setPasswordValue(event.target.value)}
           ></Input>
+          <PrimaryButton type="submit" className={styles.button}>
+            Sign in
+          </PrimaryButton>
         </form>
       </OnboardingTemplate>
     </div>

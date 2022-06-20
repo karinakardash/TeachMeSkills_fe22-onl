@@ -6,7 +6,7 @@ import styles from "../marker/Marker.module.css";
 
 type MarkerProps = {
   onMarkerClick: () => void;
-  currentState: "true" | "false";
+  currentState: boolean;
 };
 
 export const Marker: React.FC<MarkerProps> = ({
@@ -36,7 +36,7 @@ export const Marker: React.FC<MarkerProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      {currentState === "true" ? PressedBookmarkIcon : BookmarkIcon}
+      {currentState === true ? PressedBookmarkIcon : BookmarkIcon}
     </div>
   );
 };
