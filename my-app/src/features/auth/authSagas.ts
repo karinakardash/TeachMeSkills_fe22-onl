@@ -1,6 +1,14 @@
 import { put, call, takeLatest } from "typed-redux-saga";
 import { AuthApi } from "./api";
-import { activate, login, loginFailure, loginSuccess } from "./authSlice";
+import {
+  activate,
+  login,
+  loginFailure,
+  loginSuccess,
+  refresh,
+  refreshFailure,
+  refreshSuccess,
+} from "./authSlice";
 import {
   activateFailure,
   activateSuccess,
@@ -64,6 +72,35 @@ export function* loginSuccessSaga() {
       [localStorage, "setItem"],
       "refresh-tokens",
       action.payload.refresh
+    );
+  });
+}
+
+export function* refreshSaga() {
+  yield* takeLatest(refresh, function* () {
+    const refreshToken = yield* call(
+      [localStorage, "getItem"],
+      "refresh-token"
+    );
+    if (refreshToken) {
+      try {
+        const response = yield* call(AuthApi.refresh, refreshToken);
+        yield* put(refreshSuccess(response));
+      } catch (e) {
+        if (e instanceof Error) {
+          yield* put(refreshFailure(e.message));
+        }
+      }
+    }
+  });
+}
+
+export function* refreshSuccessSaga() {
+  yield takeLatest(refreshSuccess, function* (action) {
+    yield* call(
+      [localStorage, "setItem"],
+      "access-tokens",
+      action.payload.access
     );
   });
 }

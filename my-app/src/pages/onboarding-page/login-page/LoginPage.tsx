@@ -1,7 +1,7 @@
 import { Input } from "../../../ui/form/inputs/Input";
 import styles from "../login-page/LoginPage.module.css";
 import { OnboardingTemplate } from "../../../templates/onboarding/OnboadingTemplate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Title } from "../../../ui/title/Title";
 import { PrimaryButton } from "../../../ui/button/primary-button/PrimaryButton";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ import { AppPages } from "../../../types";
 import App from "../../../App";
 import { useAppDispatch } from "../../../hooks";
 import { login } from "../../../features/auth/authSlice";
+import { Header } from "../../../features/header/Header";
+import { getUser } from "../../../features/user/userSlice";
 
 type LoginPageProps = {};
 
@@ -19,6 +21,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
 
   return (
     <div className={styles.wrapper}>
+      <Header isLogin={true} />
       <OnboardingTemplate
         title={
           <Title>
@@ -41,6 +44,7 @@ export const LoginPage: React.FC<LoginPageProps> = () => {
           onSubmit={(e) => {
             e.preventDefault();
             dispatch(login({ email: emailValue, password: passwordValue }));
+            dispatch(getUser());
           }}
         >
           <Input

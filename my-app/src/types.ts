@@ -9,6 +9,7 @@ export enum AppPages {
   SUCCESS_PAGE = "/success-page",
   MAIN_PAGE = "/main",
   ACTIVATE = "/activate",
+  POST_PAGE = "/post-page",
 }
 
 export enum TabButtons {
@@ -16,3 +17,13 @@ export enum TabButtons {
   MY_FAVORITIES = "My favorities",
   POPULAR = "Popular",
 }
+
+export type Post = {
+  id: number;
+  image: string;
+  text: string;
+  date: string;
+  lesson_num: number;
+  title: string;
+  author: number;
+};

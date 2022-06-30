@@ -1,21 +1,19 @@
 import { put, call, takeLatest } from "typed-redux-saga";
 import {
-  setSelectedPost,
   getSelectedPostFetch,
   getSelectedPostSuccess,
   getSelectedPostFailure,
-} from "../../features/posts/selectedPostSlice";
+} from "./selectedPostSlice";
 import { PostsApi } from "../../features/posts/alll-posts/api";
 
 export function* selectedPostsSaga() {
-  yield takeLatest(getSelectedPostFetch, function* () {
+  yield takeLatest(getSelectedPostFetch, function* (action) {
     try {
-      const result = yield* call(PostsApi.getSelectedPostFetch);
-      console.log(result);
+      const result = yield* call(PostsApi.getSelectedPostFetch, action.payload);
       yield* put(getSelectedPostSuccess(result));
     } catch (e) {
       if (e instanceof Error) {
-        yield* put(getSelectedPostFailure(e.message));
+        yield* put(getSelectedPostFailure());
       }
     }
   });

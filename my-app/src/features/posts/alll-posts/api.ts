@@ -1,27 +1,11 @@
-export type allPostsResultsResponse = {
-  id: number;
-  image: string;
-  text: string;
-  date: string;
-  lesson_num: number;
-  title: string;
-  author: number;
-};
+import { baseUrl } from "../../../api/config";
+import { Post } from "../../../types";
+import { GetPostPayload } from "./types";
 
 export namespace PostsApi {
   export async function getAllPostsFetch() {
     try {
-      const data = await fetch(
-        "https://studapi.teachmeskills.by/blog/posts/?limit=20"
-      );
-      /*{
-        method: "GET",
-        //body: JSON.stringify(payload),
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-      );*/
+      const data = await fetch(`${baseUrl}blog/posts/?limit=20`);
       const { results } = await data.json();
       if (!data.ok) {
         const errorText = await data.text();
@@ -34,23 +18,16 @@ export namespace PostsApi {
     }
   }
 
-  export async function getSelectedPostFetch() {
+  export async function getSelectedPostFetch(
+    payload: GetPostPayload
+  ): Promise<Post> {
     try {
-      const data = await fetch(`https://studapi.teachmeskills.by/blog/posts/}`);
-      /*{
-        method: "GET",
-        //body: JSON.stringify(payload),
-        headers: {
-          "content-type": "application/json",
-        },
-      }
-      );*/
-      const { results } = await data.json();
-      if (!data.ok) {
-        const errorText = await data.text();
+      const result = await fetch(`${baseUrl}blog/posts/${payload.id}`);
+      if (!result.ok) {
+        const errorText = await result.text();
         throw new Error(errorText);
       }
-      return results;
+      return result.json();
     } catch (e) {
       console.error(e);
       throw e;

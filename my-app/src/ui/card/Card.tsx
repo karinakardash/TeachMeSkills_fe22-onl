@@ -1,5 +1,7 @@
 import React, { Children } from "react";
+import { Link } from "react-router-dom";
 import { LikeDislike } from "../../features/posts/like-dislike/ui/like-dislike/LikeDislike";
+import { AppPages } from "../../types";
 import { PrimaryButton } from "../button/primary-button/PrimaryButton";
 import styles from "./Card.module.css";
 
@@ -11,6 +13,7 @@ type CardProps = {
   title: string;
   className?: string;
   onPreviewClick?: (id: string | number) => void;
+  onClick?: (id: string | number) => void;
   LikeDislike?: React.ComponentType<{ id: string | number }>;
   Marker?: React.ComponentType<{ id: string | number }>;
   children?: React.ReactNode;

@@ -3,6 +3,7 @@ import {
   ActivatePayload,
   LoginPayload,
   LoginResponse,
+  RefreshResponse,
   RegisterPayload,
   RegisterResponse,
 } from "./types";
@@ -26,6 +27,9 @@ const authSlice = createSlice({
     loginFailure(state, action: { payload: string }) {
       console.error("LoginFailure", action.payload);
     },
+    refresh() {},
+    refreshSuccess(state, action: { payload: RefreshResponse }) {},
+    refreshFailure(state, action: { payload: string }) {},
   },
 });
 
@@ -39,5 +43,8 @@ export const {
   login,
   loginFailure,
   loginSuccess,
+  refresh,
+  refreshSuccess,
+  refreshFailure,
 } = authSlice.actions;
 export default authSlice.reducer;

@@ -7,9 +7,10 @@ import { useAppSelector, useAppDispatch } from "../../hooks";
 import { Card } from "../../ui/card/Card";
 import { AllPostsList } from "../../features/posts/alll-posts/allPostsList";
 import { getAllPostsFetch } from "../../features/posts/alll-posts/allPostsSlice";
-import { TabButtons } from "../../types";
-import { allPostsResultsResponse } from "../../features/posts/alll-posts/api";
+import { Post, TabButtons } from "../../types";
 import { TabList } from "../../features/tabs/tab-list/TabList";
+import { getUser } from "../../features/user/userSlice";
+import { Header } from "../../features/header/Header";
 
 type AllPostsPageProps = {};
 
@@ -32,16 +33,19 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
     dispatch(getAllPostsFetch());
   }, [dispatch]);
 
-  const displayAllPosts = (post: allPostsResultsResponse) => true;
-  const displayFavoritePosts = (post: allPostsResultsResponse) =>
-    favoritePosts[post.id];
-  const displayPopular = (post: allPostsResultsResponse) =>
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
+  const displayAllPosts = (post: Post) => true;
+  const displayFavoritePosts = (post: Post) => favoritePosts[post.id];
+  const displayPopular = (post: Post) =>
     popularPosts[post.id]?.state === "like";
 
   const getSelectedTabPosts = (
     selectedTab: TabButtons,
-    allPosts: allPostsResultsResponse[]
-  ): allPostsResultsResponse[] => {
+    allPosts: Post[]
+  ): Post[] => {
     switch (selectedTab) {
       case TabButtons.ALL:
         return allPosts;
@@ -81,6 +85,7 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
           </div>
         </div>
       ) : null}
+      <Header isLogin={true}></Header>
       <ContentTemplate
         title={
           <div className={styles.titleWrapper}>

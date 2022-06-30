@@ -42,7 +42,7 @@ function App() {
             element={<MypostsPage></MypostsPage>}
           ></Route>
           <Route
-            path={`${AppPages.ALL_POSTS}/id`}
+            path={`${AppPages.ALL_POSTS}/:id`}
             element={<SelectedPostPage></SelectedPostPage>}
           ></Route>
           <Route
@@ -63,6 +63,10 @@ function App() {
           <Route
             path={AppPages.MAIN_PAGE}
             element={<MainPage></MainPage>}
+          ></Route>
+          <Route
+            path={`${AppPages.POST_PAGE}/:id`}
+            element={<SelectedPostPage />}
           ></Route>
         </Routes>
       </AppContext.Provider>
