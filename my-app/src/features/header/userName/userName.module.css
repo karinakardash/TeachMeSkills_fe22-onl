@@ -1,0 +1,10 @@
+.userName {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: var(--blue-background-color);
+  color: white;
+  border-radius: 8px;
+}
+.icon {
+  margin-right: 10px;
+}
