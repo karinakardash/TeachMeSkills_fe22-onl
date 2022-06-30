@@ -11,7 +11,7 @@ export const searchSlice = createSlice({
       state.response = action.payload;
     },
     searchFailure(state, action: { payload: string }) {
-      console.error("getUserFailure", action.payload);
+      console.error("searchFailure", action.payload);
     },
     reset(state) {
       state.response = null;

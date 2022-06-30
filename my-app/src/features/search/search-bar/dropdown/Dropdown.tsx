@@ -4,7 +4,7 @@ import styles from "./Dropdown.module.css";
 
 type DropdownProps = {
   list: Post[];
-  onSelectedItem?: (id: number | string) => void;
+  onSelectedItem: (id: number | string) => void;
 };
 export const Dropdown: React.FC<DropdownProps> = ({ list, onSelectedItem }) => {
   return (
@@ -13,7 +13,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ list, onSelectedItem }) => {
         <Link
           to={`${AppPages.POST_PAGE}/${item.id}`}
           key={item.id}
-          //onClick={() => onSelectedItem(item.id)}
+          onClick={() => onSelectedItem(item.id)}
         >
           <li className={styles.li} key={item.id}>
             <img className={styles.img} src={item.image} alt={item.title} />

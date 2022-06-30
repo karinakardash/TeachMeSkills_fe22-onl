@@ -1,5 +1,5 @@
 import { ContentTemplate } from "../../templates/content/ContentTemplate";
-import styles from "../my-posts-page/MypostsPage.module.css";
+import styles from "./AllPostsPage.module.css";
 import { useEffect, useState } from "react";
 import { Title } from "../../ui/title/Title";
 import { setSelectedPost } from "../../features/posts/selectedPostSlice";
@@ -11,6 +11,8 @@ import { Post, TabButtons } from "../../types";
 import { TabList } from "../../features/tabs/tab-list/TabList";
 import { getUser } from "../../features/user/userSlice";
 import { Header } from "../../features/header/Header";
+import { SortingBar } from "../../features/sorting/sorting-bar/SortingBar";
+import { actions } from "../../features/sorting/sortingSlice";
 
 type AllPostsPageProps = {};
 
@@ -18,8 +20,11 @@ const TABS_LIST = Object.values(TabButtons);
 
 export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
   const [selectedTab, setSelectedTab] = useState(TabButtons.ALL);
-  const favoritePosts = useAppSelector((state) => state.markedPost);
+  const sortedList = useAppSelector(
+    (state) => state.sorting.response?.results ?? []
+  );
   const allPosts = useAppSelector((state) => state.allPosts.allPosts);
+  const favoritePosts = useAppSelector((state) => state.markedPost);
   const [modal, setModal] = useState(true);
   const popularPosts = useAppSelector((state) => state.likeDislike);
   const dispatch = useAppDispatch();
@@ -93,11 +98,20 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
           </div>
         }
       >
-        <TabList
-          tabs={TABS_LIST}
-          selectedTab={selectedTab}
-          onTabClick={setSelectedTab}
-        />
+        <div className={styles.supPostsBox}>
+          <TabList
+            tabs={TABS_LIST}
+            selectedTab={selectedTab}
+            onTabClick={setSelectedTab}
+          />
+          <SortingBar
+            onChange={(e) => {
+              console.log(e.currentTarget.value);
+              dispatch(actions.sorting({ text: e.currentTarget.value }));
+              console.log(sortedList);
+            }}
+          />
+        </div>
         <AllPostsList
           onPreviewClick={(id) => {
             dispatch(setSelectedPost(id));
