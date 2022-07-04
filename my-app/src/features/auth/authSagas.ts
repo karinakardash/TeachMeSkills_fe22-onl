@@ -1,45 +1,42 @@
-import { put, call, takeLatest } from "typed-redux-saga";
+import { call, put, takeLatest } from "typed-redux-saga";
 import { AuthApi } from "./api";
 import {
   activate,
-  login,
-  loginFailure,
-  loginSuccess,
-  refresh,
-  refreshFailure,
-  refreshSuccess,
-} from "./authSlice";
-import {
   activateFailure,
   activateSuccess,
   register,
   registerFailure,
   registerSuccess,
+  loginSuccess,
+  login,
+  loginFailure,
+  refresh,
+  refreshSuccess,
+  refreshFailure,
 } from "./authSlice";
 
 export function* registerSaga() {
-  yield takeLatest(register, function* (action) {
+  yield* takeLatest(register, function* (action) {
     try {
       const result = yield* call(AuthApi.register, action.payload);
-      console.log(result);
       yield* put(registerSuccess(result));
     } catch (e) {
       if (e instanceof Error) {
         yield* put(registerFailure(e.message));
       }
     }
-    console.log(action);
   });
 }
 
 export function* activateSaga() {
-  yield takeLatest(activate, function* (action) {
+  yield* takeLatest(activate, function* (action) {
     try {
       const isActivated = yield* call(AuthApi.isActivated);
       if (!isActivated) {
         const result = yield* call(AuthApi.activate, action.payload);
+        console.log(result);
       }
-      yield* put(activateSuccess);
+      yield* put(activateSuccess());
     } catch (e) {
       yield* put(activateFailure());
     }
@@ -47,30 +44,28 @@ export function* activateSaga() {
 }
 
 export function* loginSaga() {
-  yield takeLatest(login, function* (action) {
+  yield* takeLatest(login, function* (action) {
     try {
       const result = yield* call(AuthApi.login, action.payload);
-      console.log(result);
       yield* put(loginSuccess(result));
     } catch (e) {
       if (e instanceof Error) {
         yield* put(loginFailure(e.message));
       }
     }
-    console.log(action);
   });
 }
 
 export function* loginSuccessSaga() {
-  yield takeLatest(loginSuccess, function* (action) {
+  yield* takeLatest(loginSuccess, function* (action) {
     yield* call(
       [localStorage, "setItem"],
-      "access-tokens",
+      "access-token",
       action.payload.access
     );
     yield* call(
       [localStorage, "setItem"],
-      "refresh-tokens",
+      "refresh-token",
       action.payload.refresh
     );
   });
@@ -96,10 +91,10 @@ export function* refreshSaga() {
 }
 
 export function* refreshSuccessSaga() {
-  yield takeLatest(refreshSuccess, function* (action) {
+  yield* takeLatest(refreshSuccess, function* (action) {
     yield* call(
       [localStorage, "setItem"],
-      "access-tokens",
+      "refresh-token",
       action.payload.access
     );
   });

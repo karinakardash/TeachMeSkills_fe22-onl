@@ -35,15 +35,10 @@ export namespace AuthApi {
     const result = await activatePromise;
     return result.isActivated;
   }
-
   export async function activate(payload: ActivatePayload) {
-    let resolveCb: (arg: { isActivated: boolean }) => void;
-    let rejectCb: (arg: any) => void;
-    const promise = new Promise<{ isActivated: boolean }>((resolve, reject) => {
-      resolveCb = resolve;
-      rejectCb = reject;
-    });
-    activatePromise = activatePromise.then(() => promise);
+    let resolveCb!: (payload: ActivatePayload) => void;
+    const chainedPromise = new Promise<ActivatePayload>((r) => (resolveCb = r));
+    activatePromise = activatePromise.then(() => chainedPromise);
 
     try {
       const result = await fetch(`${baseUrl}auth/users/activation/`, {
@@ -56,10 +51,10 @@ export namespace AuthApi {
         throw new Error(errorText);
       }
       const data = await result.text();
-      resolveCb!({ isActivated: true });
+      resolveCb({ isActivated: true });
       return data;
     } catch (e) {
-      rejectCb!(e);
+      resolveCb({ isActivated: false });
       throw e;
     }
   }
@@ -81,6 +76,7 @@ export namespace AuthApi {
       throw e;
     }
   }
+
   export async function refresh(
     refreshToken: string
   ): Promise<RefreshResponse> {

@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Post } from "../../types";
 import { SortingPayload, SortingResponse } from "./types";
 
 export const sortingSlice = createSlice({
   name: "sorting",
-  initialState: { response: null } as { response: SortingResponse | null },
+  initialState: { sortedPosts: [] } as { sortedPosts: Post[] },
   reducers: {
     sorting(state, action: { payload: SortingPayload }) {},
-    sortingSuccess(state, action: { payload: SortingResponse }) {
-      state.response = action.payload;
+    sortingSuccess(state, action) {
+      state.sortedPosts = action.payload;
     },
     sortingFailure(state, action: { payload: string }) {
       console.error("sortingFailure", action.payload);

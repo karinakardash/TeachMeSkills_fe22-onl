@@ -13,6 +13,7 @@ import { getUser } from "../../features/user/userSlice";
 import { Header } from "../../features/header/Header";
 import { SortingBar } from "../../features/sorting/sorting-bar/SortingBar";
 import { actions } from "../../features/sorting/sortingSlice";
+import { sorting } from "../../features/sorting";
 
 type AllPostsPageProps = {};
 
@@ -20,10 +21,9 @@ const TABS_LIST = Object.values(TabButtons);
 
 export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
   const [selectedTab, setSelectedTab] = useState(TabButtons.ALL);
-  const sortedList = useAppSelector(
-    (state) => state.sorting.response?.results ?? []
-  );
-  const allPosts = useAppSelector((state) => state.allPosts.allPosts);
+  const sortedPostsList = useAppSelector((state) => state.sorting.sortedPosts);
+  const allPostsList = useAppSelector((state) => state.allPosts.allPosts);
+  let allPosts = sortedPostsList.length ? sortedPostsList : allPostsList;
   const favoritePosts = useAppSelector((state) => state.markedPost);
   const [modal, setModal] = useState(true);
   const popularPosts = useAppSelector((state) => state.likeDislike);
@@ -108,7 +108,6 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
             onChange={(e) => {
               console.log(e.currentTarget.value);
               dispatch(actions.sorting({ text: e.currentTarget.value }));
-              console.log(sortedList);
             }}
           />
         </div>

@@ -11,8 +11,7 @@ export type RegisterResponse = {
 };
 
 export type ActivatePayload = {
-  uid: string;
-  token: string;
+  isActivated: boolean;
 };
 
 export type LoginPayload = Omit<RegisterPayload, "username">;

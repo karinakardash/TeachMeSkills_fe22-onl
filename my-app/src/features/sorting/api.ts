@@ -2,12 +2,10 @@ import { baseUrl } from "../../../src/api/config";
 import { SortingResponse } from "./types";
 
 export namespace SortingApi {
-  export async function sorting(params: {
-    text: string;
-  }): Promise<SortingResponse> {
+  export async function sorting(params: { text: string }) {
     try {
       const data = await fetch(
-        `${baseUrl}blog/posts/?limit=20?ordering=${params.text}`
+        `${baseUrl}blog/posts/?limit=20&ordering=${params.text}`
       );
       const { results } = await data.json();
       if (!data.ok) {

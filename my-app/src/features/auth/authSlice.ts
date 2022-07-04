@@ -15,7 +15,7 @@ const authSlice = createSlice({
     register(state, action: { payload: RegisterPayload }) {},
     registerSuccess(state, action: { payload: RegisterResponse }) {},
     registerFailure(state, action: { payload: string }) {
-      console.error("RegisterFailure", action.payload);
+      console.error("Register failure", action.payload);
     },
     activate(state, action: { payload: ActivatePayload }) {},
     activateSuccess() {},
@@ -25,7 +25,7 @@ const authSlice = createSlice({
       state.tokens = action.payload;
     },
     loginFailure(state, action: { payload: string }) {
-      console.error("LoginFailure", action.payload);
+      console.error("Login failure", action.payload);
     },
     refresh() {},
     refreshSuccess(state, action: { payload: RefreshResponse }) {},
@@ -35,14 +35,14 @@ const authSlice = createSlice({
 
 export const {
   register,
-  registerSuccess,
   registerFailure,
+  registerSuccess,
   activate,
   activateSuccess,
   activateFailure,
   login,
-  loginFailure,
   loginSuccess,
+  loginFailure,
   refresh,
   refreshSuccess,
   refreshFailure,

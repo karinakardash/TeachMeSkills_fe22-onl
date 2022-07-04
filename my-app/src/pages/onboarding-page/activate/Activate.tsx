@@ -6,12 +6,12 @@ import styles from "../confirm-email-page/ConfirmEmailPage.module.css";
 
 type ActivatePageProps = {};
 
-export const Activate: React.FC<ActivatePageProps> = () => {
+export const Activate: React.FC = () => {
   const { uid, token } = useParams();
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (uid && token) {
-      dispatch(activate({ uid, token }));
+      dispatch(activate({ isActivated: true }));
       console.log("Dispatch was called");
     } else {
       console.error("Activate data is missing");

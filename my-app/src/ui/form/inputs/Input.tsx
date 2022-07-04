@@ -5,6 +5,7 @@ type InputProps = {
   onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
   type: string;
   label: string;
+  className?: string;
 };
 
 export const Input: React.FC<InputProps> = ({

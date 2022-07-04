@@ -10,6 +10,7 @@ export enum AppPages {
   MAIN_PAGE = "/main",
   ACTIVATE = "/activate",
   POST_PAGE = "/post-page",
+  ADD_POST_PAGE = "/add-post",
 }
 
 export enum TabButtons {

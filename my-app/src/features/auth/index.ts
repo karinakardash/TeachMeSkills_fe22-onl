@@ -6,7 +6,6 @@ import {
   refreshSaga,
   registerSaga,
 } from "./authSagas";
-import { refresh } from "./authSlice";
 
 export function* authSagas() {
   yield all([

@@ -14,6 +14,7 @@ import { MainPage } from "./pages/main-page/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppPages } from "./types";
 import { Activate } from "./pages/onboarding-page/activate/Activate";
+import { AddPostPage } from "./pages/add-post-page/AddPostPage";
 
 function App() {
   const appRef = React.createRef<HTMLDivElement>();
@@ -67,6 +68,10 @@ function App() {
           <Route
             path={`${AppPages.POST_PAGE}/:id`}
             element={<SelectedPostPage />}
+          ></Route>
+          <Route
+            path={AppPages.ADD_POST_PAGE}
+            element={<AddPostPage />}
           ></Route>
         </Routes>
       </AppContext.Provider>
