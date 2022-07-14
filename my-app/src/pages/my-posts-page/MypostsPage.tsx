@@ -48,7 +48,6 @@ export const MypostsPage: React.FC<MypostsPageProps> = () => {
                   role="button"
                   onClick={(event) => {
                     setModal(false);
-                    console.log(selectedPostId);
                     event.preventDefault();
                   }}
                 >

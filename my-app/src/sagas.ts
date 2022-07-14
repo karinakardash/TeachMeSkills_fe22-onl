@@ -8,6 +8,7 @@ import { selectedPostsSaga } from "./pages/selected-post-page/selectedPostSaga";
 import { myPostsSaga } from "./features/posts/my-posts/myPostsSaga";
 import { sortingSagas } from "./features/sorting";
 import { addPostSagas } from "./features/posts/add-post";
+import { allPostsWithPaginationSaga } from "./features/posts/pagination/paginationSaga";
 
 export function* rootSaga() {
   yield all([
@@ -20,5 +21,6 @@ export function* rootSaga() {
     myPostsSaga(),
     sortingSagas(),
     addPostSagas(),
+    allPostsWithPaginationSaga(),
   ]);
 }

@@ -11,7 +11,6 @@ export function* myPostsSaga() {
   yield takeLatest(getMyPostsFetch, function* () {
     try {
       const result = yield* call(MyPostsApi.getMyPostsFetch);
-      console.log(result);
       yield* put(getMyPostsSuccess(result));
     } catch (e) {
       if (e instanceof Error) {

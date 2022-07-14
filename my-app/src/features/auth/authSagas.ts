@@ -34,7 +34,6 @@ export function* activateSaga() {
       const isActivated = yield* call(AuthApi.isActivated);
       if (!isActivated) {
         const result = yield* call(AuthApi.activate, action.payload);
-        console.log(result);
       }
       yield* put(activateSuccess());
     } catch (e) {

@@ -9,4 +9,6 @@ export type SortingResponse = {
 
 export type SortingPayload = {
   text: string;
+  limit: number;
+  offset: number;
 };

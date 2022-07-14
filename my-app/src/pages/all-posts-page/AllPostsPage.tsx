@@ -14,6 +14,8 @@ import { Header } from "../../features/header/Header";
 import { SortingBar } from "../../features/sorting/sorting-bar/SortingBar";
 import { actions } from "../../features/sorting/sortingSlice";
 import { sorting } from "../../features/sorting";
+import { Pagination } from "../../features/posts/pagination/Pagination";
+import { getAllPostsWithPaginationFetch } from "../../features/posts/pagination/paginationSlice";
 
 type AllPostsPageProps = {};
 
@@ -23,9 +25,15 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
   const [selectedTab, setSelectedTab] = useState(TabButtons.ALL);
   const sortedPostsList = useAppSelector((state) => state.sorting.sortedPosts);
   const allPostsList = useAppSelector((state) => state.allPosts.allPosts);
-  let allPosts = sortedPostsList.length ? sortedPostsList : allPostsList;
+  const paginationPosts = useAppSelector(
+    (state) => state.paginationPosts.postsPerPage
+  );
+  let allPosts = sortedPostsList.length ? sortedPostsList : paginationPosts;
   const favoritePosts = useAppSelector((state) => state.markedPost);
   const [modal, setModal] = useState(true);
+  const [filter, setFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(9);
   const popularPosts = useAppSelector((state) => state.likeDislike);
   const dispatch = useAppDispatch();
   let selectedPostId = useAppSelector((state) => state.selectedPost.id);
@@ -37,6 +45,25 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
   useEffect(() => {
     dispatch(getAllPostsFetch());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      getAllPostsWithPaginationFetch({
+        limit: postsPerPage,
+        offset: (currentPage - 1) * postsPerPage,
+      })
+    );
+  }, [dispatch, currentPage]);
+
+  useEffect(() => {
+    dispatch(
+      sorting({
+        text: filter,
+        limit: postsPerPage,
+        offset: (currentPage - 1) * postsPerPage,
+      })
+    );
+  }, [dispatch, filter, currentPage]);
 
   useEffect(() => {
     dispatch(getUser());
@@ -62,7 +89,7 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
   };
   return (
     <div className={styles.wrapper}>
-      *{" "}
+      {" "}
       {selectedPostId != null ? (
         <div
           className={
@@ -79,7 +106,6 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
                   role="button"
                   onClick={(event) => {
                     setModal(false);
-                    console.log(selectedPostId);
                     event.preventDefault();
                   }}
                 >
@@ -106,8 +132,16 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
           />
           <SortingBar
             onChange={(e) => {
-              console.log(e.currentTarget.value);
-              dispatch(actions.sorting({ text: e.currentTarget.value }));
+              setFilter(e.currentTarget.value);
+              setCurrentPage(1);
+              console.log(currentPage);
+              /*dispatch(
+                actions.sorting({
+                  text: e.currentTarget.value,
+                  limit: postsPerPage,
+                  offset: (currentPage - 1) * postsPerPage,
+                })
+              );*/
             }}
           />
         </div>
@@ -117,6 +151,13 @@ export const AllPostsPage: React.FC<AllPostsPageProps> = () => {
             setModal(true);
           }}
           allPosts={getSelectedTabPosts(selectedTab, allPosts)}
+        />
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={allPostsList.length}
+          onClick={(e) => {
+            setCurrentPage(+e.target.innerText);
+          }}
         />
       </ContentTemplate>
     </div>

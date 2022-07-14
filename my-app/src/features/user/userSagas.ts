@@ -8,7 +8,6 @@ export function* getUserSaga() {
     if (accessToken) {
       try {
         const response = yield* call(UserApi.getInfo, { accessToken });
-        console.log(response);
         yield* put(getUserSuccess(response));
       } catch (e) {
         if (e instanceof Error) {

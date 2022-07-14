@@ -1,12 +1,14 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { Post } from "../../../types";
-import { PostsApi } from "./api";
+
 const allPostsSlice = createSlice({
   name: "allPosts",
   initialState: {
     allPosts: [],
     isLoading: false,
-  } as { allPosts: Post[]; isLoading: boolean },
+    limit: 9,
+    offset: 0,
+  } as { allPosts: Post[]; isLoading: boolean; limit: number; offset: number },
   reducers: {
     getAllPostsFetch: (state) => {
       state.isLoading = true;
