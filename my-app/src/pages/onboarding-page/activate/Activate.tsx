@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useAppDispatch } from "../../../hooks";
-import { activate } from "../../../features/auth/authSlice";
+import { activate } from "../../../features/auth";
 import styles from "../confirm-email-page/ConfirmEmailPage.module.css";
 
 type ActivatePageProps = {};

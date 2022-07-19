@@ -4,7 +4,6 @@ import likeDislikeReducer from "./features/posts/like-dislike/likeDislikeSlice";
 import markedPostReducer from "./features/posts/marker/markerSlice";
 import createSagaMiddleware from "redux-saga";
 import { rootSaga } from "./sagas";
-import authReducer from "./features/auth/authSlice";
 import allPostsReducer from "./features/posts/alll-posts/allPostsSlice";
 import userReducer from "./features/user/userSlice";
 import searchReducer from "./features/search";
@@ -13,6 +12,7 @@ import myPostsReducer from "./features/posts/my-posts/myPostsSlice";
 import sortingReducer from "./features/sorting/sortingSlice";
 import addPostReducer from "./features/posts/add-post";
 import paginationReducer from "./features/posts/pagination/paginationSlice";
+import { authReducer } from "./features/auth";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];

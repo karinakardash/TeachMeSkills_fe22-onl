@@ -1,7 +1,4 @@
-import React, { Children } from "react";
-import { Link } from "react-router-dom";
-import { LikeDislike } from "../../features/posts/like-dislike/ui/like-dislike/LikeDislike";
-import { AppPages } from "../../types";
+import React from "react";
 import { PrimaryButton } from "../button/primary-button/PrimaryButton";
 import styles from "./Card.module.css";
 

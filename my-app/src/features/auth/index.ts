@@ -6,6 +6,9 @@ import {
   refreshSaga,
   registerSaga,
 } from "./authSagas";
+import { actions } from "./authSlice";
+export { authReducer } from "./authSlice";
+export const { register, login, activate } = actions;
 
 export function* authSagas() {
   yield all([

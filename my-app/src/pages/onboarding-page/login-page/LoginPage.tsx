@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { AppPages } from "../../../types";
 import App from "../../../App";
 import { useAppDispatch } from "../../../hooks";
-import { login } from "../../../features/auth/authSlice";
+import { login } from "../../../features/auth";
 import { Header } from "../../../features/header/Header";
 import { getUser } from "../../../features/user/userSlice";
 

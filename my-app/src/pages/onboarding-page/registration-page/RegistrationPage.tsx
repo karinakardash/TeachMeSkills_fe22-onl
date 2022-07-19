@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 import { AppPages } from "../../../types";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks";
-import { register } from "../../../features/auth/authSlice";
+import { register } from "../../../features/auth";
 
 export type LoginForm = {
   emailValue: string;

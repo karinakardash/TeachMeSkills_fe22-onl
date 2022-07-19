@@ -34,7 +34,7 @@ const authSlice = createSlice({
 });
 
 export const {
-  register,
+  /* register,
   registerFailure,
   registerSuccess,
   activate,
@@ -45,6 +45,7 @@ export const {
   loginFailure,
   refresh,
   refreshSuccess,
-  refreshFailure,
-} = authSlice.actions;
-export default authSlice.reducer;
+  refreshFailure,*/
+  actions,
+} = authSlice;
+export const authReducer = authSlice.reducer;
