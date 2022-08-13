@@ -1,0 +1,26 @@
+.inputBlock {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.label {
+  font-size: 18px;
+  color: var(--secondary-text-color);
+  text-align: left;
+}
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  background-color: rgb(233, 232, 232);
+  color: black;
+  border-radius: 20px;
+  border: 2px solid var(--primary-text-color);
+  display: block;
+  padding: 5px 15px;
+  margin: 15px auto 20px;
+  font-size: 20px;
+}

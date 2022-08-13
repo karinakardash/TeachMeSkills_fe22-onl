@@ -1,0 +1,16 @@
+.header {
+  padding: 15px 20px 20px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+}
+.headerIsOpen {
+  background-color: var(--blue-background-color);
+}
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

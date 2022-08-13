@@ -1,0 +1,8 @@
+.btn {
+  width: 160px;
+  background-color: var(--secondary-text-color);
+}
+.btn__active {
+  width: 160px;
+  background-color: var(--blue-background-color);
+}

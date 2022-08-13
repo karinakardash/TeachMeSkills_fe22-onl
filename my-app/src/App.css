@@ -1,0 +1,59 @@
+#root {
+  --ls-blue: rgb(14, 78, 138);
+  --ls-light-blue: rgb(236, 244, 252);
+  --ds-blue: rgb(6, 35, 61);
+  --ds-light-blue: rgb(35, 103, 161);
+
+  --primary-text-color: var(--ls-blue);
+  --secondary-text-color: rgb(118, 133, 143);
+  --blue-background-color: var(--ls-blue);
+  --light-blue-background-color: var(--ls-light-blue);
+}
+@media (prefers-color-scheme: dark) {
+  #root {
+    --primary-text-color: white;
+    --blue-background-color: var(--ds-blue);
+    --light-blue-background-color: var(--ds-light-blue);
+  }
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+a {
+  text-decoration: none;
+}

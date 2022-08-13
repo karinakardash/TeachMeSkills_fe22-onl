@@ -1,0 +1,17 @@
+.input {
+  background-color: rgb(233, 232, 232);
+  color: black;
+  border-radius: 20px;
+  border: 2px solid var(--primary-text-color);
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  padding: 5px 15px;
+  margin: 15px auto 20px;
+  font-size: 20px;
+}
+.label {
+  font-size: 18px;
+  color: var(--secondary-text-color);
+  text-align: left;
+}

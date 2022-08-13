@@ -1,0 +1,26 @@
+.text {
+  color: var(--secondary-text-color);
+  font-size: 20px;
+}
+.link {
+  color: var(--primary-text-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.transferPage {
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+.transferPage:hover {
+  text-decoration: underline;
+}
+.button {
+  max-width: 236px;
+  width: 100%;
+  display: block;
+  margin: 30px auto 0;
+}

@@ -1,0 +1,24 @@
+.main {
+  background-color: var(--light-blue-background-color);
+  padding: 60px 20px 0;
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+.item {
+  width: 50%;
+  text-align: left;
+}
+.text {
+  font-size: 20px;
+  line-height: 26px;
+  margin-bottom: 90px;
+  color: black;
+}
+.title {
+  font-size: 42px;
+  text-align: left;
+  max-width: 250px;
+  margin-bottom: 0;
+}
